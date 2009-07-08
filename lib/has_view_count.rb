@@ -26,8 +26,8 @@ module Citrus
     	end
     	
     	def view_count_string(str = "view")
-    		return str.singularize if view_count == 1
-    		return str.pluralize unless view_count == 1
+    		return "#{view_count} #{str.singularize}" if view_count == 1
+    		return "#{view_count} #{str.pluralize}" unless view_count == 1
     	end
  
     end
