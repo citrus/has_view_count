@@ -1,22 +1,49 @@
 HasViewCount
 ============
 
+	Adds a polymorphic association that allows any model to have a unique visitor count (based on ipaddress)
+	
 
+
+Installation
+============
+	
+	script/generate has_view_count
+	rake db:migrate
+	
+	
+	
+	This will generate:
+		db/migrate/XXXXXXXXXXXXXX_has_view_count_migration.rb
+		app/models/view_count.rb
+		
+	
 
 Example
 =======
  
-Declare in model:
+Declare in Model:
 
-	class Page < ActiveRecord::Base
+	class Post < ActiveRecord::Base
 		has_view_count
 	end
 	
 Modify Controller:
 	
-	add to any action you wish to track
-	
-	@page.record_view_count(request.remote_ip)
-	
+	class PostsController < ApplicationController
 
+  	after_filter :record_view_count, :only => :show
+  
+  	...
+  
+  	private
+  
+	  def record_view_count
+	  	@post.record_view_count(request.remote_ip)
+	  end
+	
+	end
+	
+	
+	
 Copyright (c) 2009 Citrus Media Group / Spencer Steffen, released under the MIT license
