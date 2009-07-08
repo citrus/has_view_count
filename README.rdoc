@@ -1,0 +1,22 @@
+HasViewCount
+============
+
+
+
+Example
+=======
+ 
+Declare in model:
+
+	class Page < ActiveRecord::Base
+		has_view_count
+	end
+	
+Modify Controller:
+	
+	add to any action you wish to track
+	
+	@page.record_view_count(request.remote_ip)
+	
+
+Copyright (c) 2009 Citrus Media Group / Spencer Steffen, released under the MIT license
