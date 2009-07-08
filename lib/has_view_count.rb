@@ -16,8 +16,8 @@ module Citrus
   	
     module InstanceMethods
     
-    	def record_view_count(ip)
-      	self.view_counts.create(:viewable => self, :ip => ip, :logged_in => logged_in?)
+    	def record_view_count(ip, logged_in)
+      	self.view_counts.create(:viewable => self, :ip => ip, :logged_in => logged_in)
       	return self   
     	end
     	
