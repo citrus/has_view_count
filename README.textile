@@ -6,9 +6,16 @@ h3. Adds a polymorphic association that allows any model to have a unique visito
 
 h2. Installation
 
+	script/plugin install git://github.com/citrus/has_view_count.git
+	- or -
+	git submodule add git://github.com/citrus/has_view_count.git vendor/plugins/has_view_count
+	
+
+
 	script/generate has_view_count
 	rake db:migrate
-	
+	restart mongrel
+
 	
 _This will generate_
 		
@@ -36,7 +43,7 @@ h4. Controller:
   	...
   	private
 	  def record_view_count
-	  	@post.record_view_count(request.remote_ip, logged_in?)
+	  	@post.record_view_count(request.remote_ip, logged_in?) # use logged_in? if you have restful_authentication installed
 	  end
 	end
 	
