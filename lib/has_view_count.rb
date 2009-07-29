@@ -24,11 +24,7 @@ module Citrus
     	def view_count
     		self.view_counts.length
     	end
-    	
-    	def viewed_on
-        self.created_at.srftime('%x')
-    	end
-    	
+    	    	
     	def view_count_string(str = "view")
     		return "#{view_count} #{str.singularize}" if view_count == 1
     		return "#{view_count} #{str.pluralize}" unless view_count == 1
