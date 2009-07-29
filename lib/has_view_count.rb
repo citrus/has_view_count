@@ -16,13 +16,17 @@ module Citrus
   	
     module InstanceMethods
     
-    	def record_view_count(ip, logged_in = false)
-      	self.view_counts.create(:viewable => self, :ip => ip, :logged_in => logged_in)
+    	def record_view_count(ip_address, logged_in = false)
+      	self.view_counts.create(:viewable => self, :ip_address => ip_address, :logged_in => logged_in)
       	return self   
     	end
     	
     	def view_count
     		self.view_counts.length
+    	end
+    	
+    	def viewed_on
+        self.created_at.srftime('%x')
     	end
     	
     	def view_count_string(str = "view")
